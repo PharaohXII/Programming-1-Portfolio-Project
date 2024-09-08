@@ -52,7 +52,7 @@ class Home {
         System.out.println("Square Feet; " + squareFeet);
         System.out.println("Address: " + address);
         System.out.println("City: " + city);
-        System.out.println("State: " + State);
+        System.out.println("State: " + state);
         System.out.println("ZipCode: " + zipCode);
         System.out.println("Model Name: " + modelName);
         System.out.println("Sale Status: " + saleStatus);
@@ -120,14 +120,14 @@ public class HomeInventory {
     public void printToFile(String filePath) {
         try (FileWriter writer = new FileWriter(filePath)){
             for (Home home : homes) {
-              writer.write("Square Feet: " + home.getSquareFeet() + "\n");
-              writer.write("Address: " + home.getAddress() + "\n");
-               writer.write("City: " + home.getCity() + "\n");
-               writier.write("State: " + home.getState() + "\n");
-               writer.write("Zip Code: " + home.getZipCode() + "\n");
-               writer.write("Model Name: " + home.getModelName() + "\n");
-               writer.write("Sale Status: " + home.getSaleStatus() + "\n");
-               writer.write("-----------------------\n");
+                writer.write("Square Feet: " + home.getSquareFeet() + "\n");
+                writer.write("Address: " + home.getAddress() + "\n");
+                writer.write("City: " + home.getCity() + "\n");
+                writer.write("State: " + home.getState() + "\n");
+                writer.write("Zip Code: " + home.getZipCode() + "\n");
+                writer.write("Model Name: " + home.getModelName() + "\n");
+                writer.write("Sale Status: " + home.getSaleStatus() + "\n");
+                writer.write("-----------------------\n");
         }
         System.out.println("File written successfully to " + filePath);
      } catch (IOException e) { 
@@ -193,7 +193,7 @@ public static void main(String[] args) {
                     break;
                 case 4:
                     //list Homes
-                    invenotory.listHomes();
+                    inventory.listHomes();
                     break;
                 
                 case 5:
