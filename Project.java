@@ -216,7 +216,7 @@ public static void main(String[] args) {
             scanner.nextLine(); //Clear invalid input
             choice = 0; // reset choice to continue loop
         }
-    } while (Choice != 6);
+    } while (choice != 6);
 
     scanner.close();
     }
