@@ -2,6 +2,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 //Home ClassTo hold house data
 
@@ -60,7 +61,7 @@ class Home {
 }
 
 //Home inventory class to manage houses
-public class HomeInventory {
+class HomeInventory {
     private ArrayList<Home> homes = new ArrayList<>();
 
     //Add new home method
@@ -89,10 +90,10 @@ public class HomeInventory {
     }
 
     //Update sale status Method
-    public String updateHomeSaleStatus(String Address, String newSaleStatus) {
+    public String updateHomeSaleStatus(String address, String newSaleStatus) {
         try{
             for (Home home : homes) {
-                if ( home.getAddress().equalsIgnoreCase(address)) { 
+                if (home.getAddress().equalsIgnoreCase(address)) { 
                     home.setSaleStatus(newSaleStatus);
                     return "Sale status successfully updated.";
                 }
@@ -135,10 +136,12 @@ public class HomeInventory {
         }
     }
 
-//Method to handle user inputs
-public static void main(String[] args) {
+        //Method to handle user inputs
+    public static void main(String[] args) {
     HomeInventory inventory = new HomeInventory();
-    Scanner scanner = new scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
+    
+    
     int choice;
 
     do {
@@ -161,18 +164,18 @@ public static void main(String[] args) {
                     System.out.println("Enter square feet: ");
                     int squareFeet = scanner.nextInt();
                     System.out.println("Enter address :");
-                    String address = scanner.nextInt();
+                    String address = scanner.nextLine();
                     System.out.println("Enter City: ");
-                    String city = scanner.nextInt();
+                    String city = scanner.nextLine();
                     System.out.println("Enter State: ");
-                    String state = scanner.nextInt();
+                    String state = scanner.nextLine();
                     System.out.println("Enter Zip Code: ");
-                    int ZipCode = scanner.nextInt();
+                    int zipCode = scanner.nextInt();
                     scanner.nextLine(); // consume next line
                     System.out.println("Enter Model Name: ");
-                    String modelName = scanner.nextInt();
+                    String modelName = scanner.nextLine();
                     System.out.println("Enter Sale Status (Sold, Avaialable, Under Contract)");
-                    String saleStatus = scanner.nextInt();
+                    String saleStatus = scanner.nextLine();
 
                     Home newHome = new Home(squareFeet, address, city, state, zipCode, modelName, saleStatus);
                     System.out.println(inventory.addHome(newHome));
