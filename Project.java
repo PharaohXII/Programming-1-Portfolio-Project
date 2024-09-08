@@ -135,19 +135,6 @@ public class HomeInventory {
         }
     }
 
-    //print home details method
-    public void printHome() {
-        System.out.println("Square Feet: " + squareFeet);
-        System.out.println("Address: " + address);
-        System.out.println("City: " + city);
-        System.out.println("State: " + state);
-        System.out.println("Zip Code: " + zipCode);
-        System.out.println("Model Name: " + modelName);
-        System.out.println("Sale Status: " + saleStatus);
-        System.out.println("----------------------");
-    }
-
-
 //Method to handle user inputs
 public static void main(String[] args) {
     HomeInventory inventory = new HomeInventory();
