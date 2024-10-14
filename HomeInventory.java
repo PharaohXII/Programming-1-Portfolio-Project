@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.InputMismatchException;
-
+    
 //Home ClassTo hold house data
 
 class Home {
@@ -15,16 +15,17 @@ class Home {
     private String modelName;
     private String saleStatus;
 
+
     //constructor
     public Home(int squareFeet, String address, String city, String state, int zipCode, String modelName, String saleStatus) {
         this.squareFeet = squareFeet;
-        this.address =address;
+        this.address = address;
         this.city = city;
         this.state =state;
         this.zipCode = zipCode;
-        this.modelName =modelName;
-        this.saleStatus =saleStatus;
-     }
+        this.modelName = modelName;
+        this.saleStatus = saleStatus;
+    }
 
     //Getters / Setters
      public int getSquareFeet() { return squareFeet; }
@@ -57,7 +58,7 @@ class Home {
         System.out.println("ZipCode: " + zipCode);
         System.out.println("Model Name: " + modelName);
         System.out.println("Sale Status: " + saleStatus);
-     }
+    }
 }
 
 //Home inventory class to manage houses
@@ -163,17 +164,24 @@ class HomeInventory {
                 //Add a home
                     System.out.println("Enter square feet: ");
                     int squareFeet = scanner.nextInt();
-                    System.out.println("Enter address :");
+                    scanner.nextLine();
+
+                    System.out.println("Enter address: ");
                     String address = scanner.nextLine();
+
                     System.out.println("Enter City: ");
                     String city = scanner.nextLine();
+
                     System.out.println("Enter State: ");
                     String state = scanner.nextLine();
+
                     System.out.println("Enter Zip Code: ");
                     int zipCode = scanner.nextInt();
                     scanner.nextLine(); // consume next line
+
                     System.out.println("Enter Model Name: ");
                     String modelName = scanner.nextLine();
+
                     System.out.println("Enter Sale Status (Sold, Avaialable, Under Contract)");
                     String saleStatus = scanner.nextLine();
 
@@ -182,15 +190,15 @@ class HomeInventory {
                     break;
                 case 2:
                     //Remove Home
-                    System.out.print("Enter address of home to remove");
+                    System.out.print("Enter address of home to remove\n");
                     String removeAddress = scanner.nextLine();
                     System.out.println(inventory.removeHome(removeAddress));
                     break;
                 case 3:
                     //update sale status
-                    System.out.println("Enter address of home to update: " );
+                    System.out.println("Enter address of home to update: \n" );
                     String updateAddress = scanner.nextLine();
-                    System.out.println("Enter a new sale status (sold, available, under contract)");
+                    System.out.println("Enter a new sale status (sold, available, under contract)\n");
                     String newSaleStatus = scanner.nextLine();
                     System.out.println(inventory.updateHomeSaleStatus(updateAddress, newSaleStatus));
                     break;
@@ -208,6 +216,8 @@ class HomeInventory {
                 
                 case 6:
                     //Exit
+                    //Ask to print homes
+                    inventory.askToPrintHomes(scanner);
                     System.out.print("Exiting...");
                     break;
 
@@ -222,5 +232,21 @@ class HomeInventory {
     } while (choice != 6);
 
     scanner.close();
+    }
+
+    public void askToPrintHomes(Scanner scanner) {
+        System.out.println("Do you want to print the list of homes to a file? (Y/N)");
+        String input = scanner.nextLine().trim().toUpperCase(); //Ensure input is case insensitive
+
+        if (input.equals("Y")){
+            System.out.println("Enter file path to save the homes list (e.g. C:\\Temp\\Homes.txt)");
+            String filePath = scanner.nextLine();
+            printToFile(filePath);
+        } else if (input.equals("N")) {
+            System.out.println("Homes will not be printed");
+        } else {
+            System.out.println("Invalid Input. Please Enter 'Y' or 'N'");
+            askToPrintHomes(scanner); //reask if input is invalid
+        }
     }
 }
